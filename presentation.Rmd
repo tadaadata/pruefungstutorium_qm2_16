@@ -89,6 +89,67 @@ a) Die Hypothese, dass es für die Schülerinnen keine **jahrgangsstufenspezifis
 
 b) Falls ein signifikantes Testergebnis vorliegt, ist die **empirische Effektgröße** zu ermitteln und zu überprüfen, zwischen welchen Jahrgängen Unterschiede bestehen könnten!
 
+## Aufgabe 7: ANOVA
+
+In 3 Kursen (A, B, C) der 11. Jahrgangsstufe werden Schüler und Schülerinnen nach unterschiedlichen Methoden unterrichtet. Aus jedem der 3 Kurse werden jeweils 9 SchülerInnen durch eine Zufallsauswahl bestimmt. Bei einem abschließenden Leistungstest werden die folgenden Ergebnisse erzielt:
+
+SchülerInnen des Kurses A: `10, 19, 21, 24, 22, 16, 11, 21, 19`  
+SchülerInnen des Kurses B: `16, 19, 18, 16, 11, 19, 19, 16, 21`  
+SchülerInnen des Kurses C: `22, 17, 12, 20, 16, 21, 22, 11, 21`
+
+Wenden Sie einen geeigneten Test an.
+
+## Aufgabe 8: Optimales N & t-Test (abhängig)
+
+Auf dem Testniveau $\alpha=0.05$ ist zu prüfen, ob bei den Schülerinnen Mittelwertunterschiede bei den Merkmalen **Mathe** und **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass beide Merkmale innerhalb der Grundgesamtheit der **125 NGO-Schülerinnen** normalverteilt sind! Es ist ein **zweiseitiger** Test durchzuführen und der **Stichprobenumfang** so zu wählen, dass ein **mittlerer Effekt** mit einer Wahrscheinlichkeit von mindestens **0.85** aufgedeckt werden kann. Wie viele Stichprobenelemente wären für die Durchführung eines **einseitigen Tests** angemessen gewesen?
+
+
+## Aufgabe 9: Optimales N & t-Test (unabhängig)
+
+Auf dem Testniveau von $\alpha=0.01$ ist zu prüfen, ob **geschlechtsspezifische** Mittelwertunterschiede beim Merkmal **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass das Merkmal **Deutsch** innerhalb der beiden Grundgesamtheiten der jeweiligen **125 NGO-Schüler und Schülerinnen** normalverteilt ist! Zur Prüfung der **zweiseitigen** Fragestellung ist der **Umfang** der beiden Zufallsstichproben so zu wählen, dass ein durch die E**ffektgröße „,.9**beschriebener Effekt mit einer Wahrscheinlichkeit von mindestens „**0.85**aufgedeckt werden kann! Wie berechnet sich der Testwert?
+
+## Aufgabe 10: ANOVA
+
+a) Es ist zu prüfen, ob die These **Das Geschlecht und die Jahrgangsstufe üben einen Interaktionseffekt auf *Deutsch* aus, und das Geschlecht wirkt *nicht* als Haupteffekt.** akzeptabel ist!
+
+b) Welche Voraussetzungen sind zu erfüllen, damit eine 2-faktorielle Varianzanalyse durchgeführt werden kann?
+
+c) Welche Feststellungen lassen sich – auf der Basis eines Testniveaus von $\alpha=0.05$ - über potentiell wirksame Effekte treffen?
+
+d) Wie viele SchülerInnen wären für jede der 6 Zellen des Versuchsplans erforderlich gewesen, um – auf der Basis des Testniveaus $\alpha=0.05$ - einen tatsächlich vorliegenden, nach Cohen als **stark** taxierten Interaktionseffekt mit einer Mindest-Teststärke von **0.8** „aufdecken“ zu können?
+
+## Aufgabe 11: Kruskal-Wallis & Wilcoxon-Test
+
+Wählen Sie selbst für Sie interessante Variablen einmal für eine Varianzanalyse, einmal für den Kruskal-Wallis-Test & einmal für den Wilcoxon-Test aus dem Psychologie-Datensatz aus und interpretieren Sie die Daten.
+
 # Aufgabenblock 2
 
 Berechnungen per Hand ಠ_ಠ 
+
+## Aufgabe 13: ANOVA
+
+Berechnen Sie auf Basis folgender Daten die **Binnenvarianz**, die **Treatmentvarianz**, den **F-Wert** und den **kritischen Wert**:
+
+![](http://dump.jemu.name/VkCCo.png)
+
+Zu welchem Inferenzschluss gelangen Sie?
+
+## Aufgabe 14
+
+Sie haben folgende Testwerte von 6 frühgeborenen Kindern bezüglich ihrer motorischen Fähigkeiten vorliegen: `7, 8, 11, 9, 8, 10`. Welches Intervall enthält mit einer **Mutmaßlichkeit von 99%** den wahren Mittelwert der motorischen Fähigkeiten? Erklären Sie: Wie ist es möglich anhand des Konfidenzintervalls eine Aussage über die Mutmaßlichkeeit einer Mitte zu treffen?
+
+## Aufgabe 15
+
+Nutzen Sie die Standardnormalverteilungstabelle in Studip. Wiederholen Sie die Kenntnisse aus der Deskriptiven Statistik, indem Sie die Wahrscheinlichkeiten von Werten in folgenden Bereichen berechnen:
+
+Wie wahrscheinlich ist es, dass Werte im Bereich
+
+- 2 bis 2.5
+- 0.75 bis 1.3 
+- $-\infty$ bis -0.2 liegen?
+
+## Aufgabe 16 
+
+10 Frauen in der Alterskategorie 40+ wurden in einer Studie über ihre sportlichen Aktivitäten befragt. Jede dieser Frauen war in den letzten Monaten als Mitglied im Fitnessstudio registriert. Berechnen Sie auf Basis der nachfolgenden Daten den Standardfehler und die Standardabweichung. Vergleichen Sie die Werte.
+
+![](http://dump.jemu.name/wlc4l.png)
