@@ -23,7 +23,7 @@ output:
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.path = "plots/", echo = F, warning = F, message = F)
+knitr::opts_chunk$set(fig.path = "plots/", fig.align = "center", fig.retina = 2, echo = F, warning = F, message = F)
 
 # Package init script
 #suppressWarnings(source("http://stats.jemu.name/qm/tools/package-init.R"))
@@ -49,7 +49,19 @@ Berechnungen per Software
 
 ## Aufgabe 1: 𝜒²-Test
 
+> Prüfen Sie die Hypothese, ob zwischen den Merkmalen **Geschlecht** und **Abschalten**
+innerhalb der Grundgesamtheit aller **NGO-SchülerInnen** eine statistische Beziehung existiert. Lassen Sie sich bei der Ausgabe eine Kontigenztabelle mitanzeigen.
+Berechnen Sie den Testwert per Hand.
 
+```{r a01_table}
+t1 <- sjt.xtab(var.row = ngo$abschalt, var.col = ngo$geschl,
+               show.col.prc = TRUE, show.exp = TRUE, show.legend = TRUE, show.summary = FALSE,
+               use.viewer = F, no.output = T)
+```
+
+`r t1$knitr`
+
+$\chi^2 = \frac{(60-69)^2}{69} + \frac{(78-69)^2}{69} + \frac{(63-54)^2}{54} + \frac{(45-54)^2}{54} \approx 5.348$
 
 # Aufgabenblock 2
 
