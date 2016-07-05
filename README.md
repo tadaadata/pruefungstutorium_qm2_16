@@ -1,2 +1,3 @@
 # pruefungstutorium_qm2_16
-Prüfungstutorium QM2 SoSe16
+
+Präsentation/Code für das QM2 Prüfungstutorium im SoSe 16
