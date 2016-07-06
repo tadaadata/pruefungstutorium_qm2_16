@@ -85,9 +85,26 @@ Berechnen Sie einen geeigneten Test für die Fragestellung, ob die Verteilungen 
 
 ## Aufgabe 6: ANOVA + posthoc
 
-a) Die Hypothese, dass es für die Schülerinnen keine **jahrgangsstufenspezifischen** Unterschiede im Hinblick auf die Anzahl von Wochentagen gibt, an denen für das Fach **Deutsch** gelernt wird, ist mit den für die **NGO-SchülerInnen** erhobenen Daten teststatistisch zu prüfen!
+Die Hypothese, dass es für die Schülerinnen keine **jahrgangsstufenspezifischen** Unterschiede im Hinblick auf die Anzahl von Wochentagen gibt, an denen für das Fach **Deutsch** gelernt wird, ist mit den für die **NGO-SchülerInnen** erhobenen Daten teststatistisch zu prüfen!
 
-b) Falls ein signifikantes Testergebnis vorliegt, ist die **empirische Effektgröße** zu ermitteln und zu überprüfen, zwischen welchen Jahrgängen Unterschiede bestehen könnten!
+Falls ein signifikantes Testergebnis vorliegt, ist die **empirische Effektgröße** zu ermitteln und zu überprüfen, zwischen welchen Jahrgängen Unterschiede bestehen könnten!
+
+- Was ist zu tun?
+  - ANOVA: `aov()`
+  - Effektgröße $\eta^2$: `lsr::etaSquared()`
+  - Untergruppen-Test (Bonferroni, Scheffé): `asbio::pairw.anova()`
+
+
+## Aufgabe 6: ANOVA + posthoc (Code)
+
+```{r a06, echo = T}
+probe6 <- ngo %>% filter(geschl == "Weiblich")
+anova6 <- aov(deutsch ~ jahrgang, data = probe6)
+anova6 %>% tidy() %>% kable(digits = 8)
+lsr::etaSquared(anova6, type = 3)
+asbio::pairw.anova(probe6$deutsch, probe6$jahrgang, method = "scheffe")$summary %>% kable(digits = 8)
+```
+
 
 ## Aufgabe 7: ANOVA
 
@@ -106,7 +123,7 @@ Auf dem Testniveau $\alpha=0.05$ ist zu prüfen, ob bei den Schülerinnen Mittel
 
 ## Aufgabe 9: Optimales N & t-Test (unabhängig)
 
-Auf dem Testniveau von $\alpha=0.01$ ist zu prüfen, ob **geschlechtsspezifische** Mittelwertunterschiede beim Merkmal **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass das Merkmal **Deutsch** innerhalb der beiden Grundgesamtheiten der jeweiligen **125 NGO-Schüler und Schülerinnen** normalverteilt ist! Zur Prüfung der **zweiseitigen** Fragestellung ist der **Umfang** der beiden Zufallsstichproben so zu wählen, dass ein durch die E**ffektgröße „,.9**beschriebener Effekt mit einer Wahrscheinlichkeit von mindestens „**0.85**aufgedeckt werden kann! Wie berechnet sich der Testwert?
+Auf dem Testniveau von $\alpha=0.01$ ist zu prüfen, ob **geschlechtsspezifische** Mittelwertunterschiede beim Merkmal **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass das Merkmal **Deutsch** innerhalb der beiden Grundgesamtheiten der jeweiligen **125 NGO-Schüler und Schülerinnen** normalverteilt ist! Zur Prüfung der **zweiseitigen** Fragestellung ist der **Umfang** der beiden Zufallsstichproben so zu wählen, dass ein durch die **Effektgröße 0.9** beschriebener Effekt mit einer Wahrscheinlichkeit von mindestens **0.85** aufgedeckt werden kann! Wie berechnet sich der Testwert?
 
 ## Aufgabe 10: ANOVA
 
