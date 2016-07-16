@@ -211,6 +211,33 @@ Zu welchem Inferenzschluss gelangen Sie?
 
 Sie haben folgende Testwerte von 6 frühgeborenen Kindern bezüglich ihrer motorischen Fähigkeiten vorliegen: `7, 8, 11, 9, 8, 10`. Welches Intervall enthält mit einer **Mutmaßlichkeit von 99%** den wahren Mittelwert der motorischen Fähigkeiten? Erklären Sie: Wie ist es möglich anhand des Konfidenzintervalls eine Aussage über die Mutmaßlichkeeit einer Mitte zu treffen?
 
+- $$CI_{\text{lower}} = \bar{x} - S_{\bar{x}} \cdot z_{1 - \frac{\alpha}{2}} \quad CI_{\text{upper}} = \bar{x} + S_{\bar{x}} \cdot z_{1 - \frac{\alpha}{2}}$$
+- $$\bar{x} \approx 8.83 \quad S_{\bar{x}} \approx 0.6 \quad z_{1 - \frac{\alpha}{2}} \approx 2.576$$
+
+```{r a14_plot, fig.height= 3, fig.width=7}
+values <- c(7, 8, 11, 9, 8, 10)
+alpha <- 0.01/2
+m <- mean(values)
+sem <- sd(values)/sqrt(length(values))
+ki <- c(m - sem * qnorm(1-alpha), m + sem * qnorm(1-alpha))
+df <- data_frame(x = seq(m-3, m+3, .01), y = dnorm(x, mean = m, sd = sem))
+
+ggplot(data = df, aes(x = x, y = y)) +
+  geom_line() +
+  geom_vline(xintercept = ki[[1]], linetype = "dotdash") +
+  geom_vline(xintercept = ki[[2]], linetype = "dotdash") +
+  geom_area(data = filter(df, x < ki[2], x > ki[1]), aes(x, y), fill = "green", alpha = .5) +
+  geom_area(data = filter(df, x > ki[2]), aes(x, y), fill = "red", alpha = .5) +
+  geom_area(data = filter(df, x < ki[1]), aes(x, y), fill = "red", alpha = .5) +
+  scale_x_continuous(breaks = seq(0, 100, 1), minor_breaks = seq(0, 100, .5)) +
+  annotate("label", x = ki[1]-0.4, y = 0.02, label = "frac(alpha,2)", parse = T) +
+  annotate("label", x = ki[2]+0.4, y = 0.02, label = "frac(alpha,2)", parse = T) +
+  annotate("label", x = m, y = 0.1, label = "1 - alpha == 0.99", parse = T) +
+  labs(title = expression(N(8.83, 0.6)), x = "x", y = expression(P(x))) +
+  theme_readthedown()
+
+```
+
 ## Aufgabe 15
 
 Nutzen Sie die Standardnormalverteilungstabelle in Studip. Wiederholen Sie die Kenntnisse aus der Deskriptiven Statistik, indem Sie die Wahrscheinlichkeiten von Werten in folgenden Bereichen berechnen:
