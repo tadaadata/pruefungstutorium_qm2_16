@@ -138,7 +138,7 @@ ggplot(data = df, aes(x = x, y = y)) +
 ```
 
 
-## Aufgabe 5: t-Test / U-Test (?) {.incremental}
+## Aufgabe 5: t-Test / U-Test (?) {.build}
 
 ```{r a05_datainit}
 student <- labels_to_factor(haven::read_spss("http://qm.jemu.name/data/Student_Daten.sav"))
@@ -146,17 +146,9 @@ student <- labels_to_factor(haven::read_spss("http://qm.jemu.name/data/Student_D
 
 Berechnen Sie einen geeigneten Test für die Fragestellung, ob die Verteilungen des Alkoholkkonsums bei ernährungsbewussten StudentInnen (Vegetarier) und der fleischkonsumierenden StudentInnen gleich sind. Prüfen Sie einseitig die Annahme, dass die Tatsache Vegetarier zu sein, sich positiv auf einen geringeren Alkoholkonsum auswirkt. Wie kommt der resultierende Testwert zustande?
 
-> - $H_0:$ die Ernährungsart hat keinen Einfluss auf den Alkoholkonsum  
-    $H_1:$ Vegetarier*innen konsumieren weniger Alkohol als Omnivore
+> $H_0:$ die Ernährungsart hat keinen Einfluss auf den Alkoholkonsum  
+  $H_1:$ Vegetarier*innen konsumieren weniger Alkohol als Omnivore
   
-
-## Aufgabe 5: t-Test / U-Test (?) {.incremental}
-
-Berechnen Sie einen geeigneten Test für die Fragestellung, ob die Verteilungen des Alkoholkkonsums bei ernährungsbewussten StudentInnen (Vegetarier) und der fleischkonsumierenden StudentInnen gleich sind. Prüfen Sie einseitig die Annahme, dass die Tatsache Vegetarier zu sein, sich positiv auf einen geringeren Alkoholkonsum auswirkt. Wie kommt der resultierende Testwert zustande?
-
-> - $H_0:$ die Ernährungsart hat keinen Einfluss auf den Alkoholkonsum  
-    $H_1:$ Vegetarier*innen konsumieren weniger Alkohol als Omnivore
-
 Vorraussetzungen:
 
 Test          | Sig.-Niveau 
@@ -164,16 +156,16 @@ Test          | Sig.-Niveau
 Shapiro-Wilk  | `r shapiro.test(as.numeric(student$Trinkverhalten))$p.value`
 Levene        | `r leveneTest(as.numeric(student$Trinkverhalten) ~ student$Ernährungstyp)$Pr[1]`  
 
-> - **Ergebnis:**
-$\rightarrow$ Mann-Whitney-U-Test!
+<br />
+$\rightarrow$ **Mann-Whitney-U-Test!**
 
 
 ## Aufgabe 5: t-Test / U-Test (?)
 
 Berechnen Sie einen geeigneten Test für die Fragestellung, ob die Verteilungen des Alkoholkkonsums bei ernährungsbewussten StudentInnen (Vegetarier) und der fleischkonsumierenden StudentInnen gleich sind. Prüfen Sie einseitig die Annahme, dass die Tatsache Vegetarier zu sein, sich positiv auf einen geringeren Alkoholkonsum auswirkt. Wie kommt der resultierende Testwert zustande?
 
-- $H_0:$ die Ernährungsart hat keinen Einfluss auf den Alkoholkonsum
-- $H_1:$ Vegetarier*innen konsumieren weniger Alkohol als Omnivore
+> $H_0:$ die Ernährungsart hat keinen Einfluss auf den Alkoholkonsum  
+  $H_1:$ Vegetarier*innen konsumieren weniger Alkohol als Omnivore
 
 ```{r a05_wilcox.test}
 wilcox.test(as.numeric(student$Trinkverhalten) ~ student$Ernährungstyp)
