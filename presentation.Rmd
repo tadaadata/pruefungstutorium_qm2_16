@@ -24,6 +24,7 @@ output:
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(fig.path = "plots/", fig.align = "center", fig.retina = 2, echo = F, warning = F, message = F)
+load(url("http://qm.jemu.name/data/ngo"))
 
 # Package init script
 #suppressWarnings(source("http://stats.jemu.name/qm/tools/package-init.R"))
@@ -74,6 +75,68 @@ Es wird davon ausgegangen, dass das Merkmal **Unterrichtsstunden** in der Grundg
 a) Dazu ist eine Zufallsstichprobe vom **Umfang 40** zu ziehen und bezüglich der Alternativhypothese $H_1(\mu<33)$ ein Signifikanz-Test mit einem Testniveau von $\alpha = 0.05$ durchzuführen! Erklären Sie, wie sich der Testwert ermitteln lässt.
 
 b) Zu welchem Ergebnis würde der Inferenzschluss führen, wenn anstelle des einseitigen Tests ein zweiseitiger Test zur Prüfung der Hypothese $\mu=33$ zu erfolgen hätte?
+
+- How to z-test:
+- $$ \frac {\bar{x} - \mu} {\frac{\sigma}{\sqrt{n}}} $$
+
+
+## Aufgabe 2a: testing the z
+
+$$ \frac {\bar{x} - \mu} {\frac{\sigma}{\sqrt{n}}} $$
+
+also:
+```{r a02_sample_mean, echo = T}
+ngo40 <- sample_n(ngo, 40)
+mean(ngo40$stunzahl)
+```
+
+- $$ \frac {`r mean(ngo40$stunzahl)` - 33} {\frac {1.5}{\sqrt{40}}} = `r (mean(ngo40$stunzahl) - 33) / (1.5 / sqrt(40))`$$
+
+
+## Aufgabe 2a: Inferenzschluss in bunt
+
+$$ \frac {`r mean(ngo40$stunzahl)` - 33} {\frac {1.5}{\sqrt{40}}} = `r (mean(ngo40$stunzahl) - 33) / (1.5 / sqrt(40))`$$
+
+bei $\alpha = 5\%$, einseitig:
+
+```{r a02a_bunt}
+ztest <- (mean(ngo40$stunzahl) - 33) / (1.5 / sqrt(40))
+
+ggplot(data = NULL, aes(x = -3.3:3.3)) +
+  stat_function(fun = dnorm, geom = "density", color = "black") +
+  geom_vline(aes(xintercept = qnorm(.05)), color = "red") +
+  geom_vline(aes(xintercept = ztest), color = "blue") +
+  annotate("text", x = qnorm(.05) - 0.55, y = 0.3, color = "dark red",
+           label = paste("z[krit]", "==", round(qnorm(.05), 2)), parse = T) +
+  annotate("text", x = ztest + 0.4, y = 0.2, color = "dark blue",
+           label = paste("z[test]", "==", round(ztest, 2)), parse = T) +
+  labs(x = NULL, y = NULL) +
+  theme_bw(base_family = "Palatino")
+```
+
+
+## Aufgabe 2b: Inferenzschluss in bunt
+
+$$ \frac {`r mean(ngo40$stunzahl)` - 33} {\frac {1.5}{\sqrt{40}}} = `r (mean(ngo40$stunzahl) - 33) / (1.5 / sqrt(40))`$$
+
+bei $\alpha = 5\%$, zweiseitig:
+
+```{r a02b_bunt}
+ggplot(data = NULL, aes(x = -3.3:3.3)) +
+  stat_function(fun = dnorm, geom = "density", color = "black") +
+  geom_vline(aes(xintercept = qnorm(.025)), color = "red") +
+  geom_vline(aes(xintercept = qnorm(.975)), color = "red") +
+  geom_vline(aes(xintercept = ztest), color = "blue") +
+  annotate("text", x = qnorm(.025) + 0.6, y = 0.3, color = "dark red",
+           label = paste("z[krit]", "==", round(qnorm(.025), 2)), parse = T) +
+  annotate("text", x = qnorm(.975) - 0.5, y = 0.3, color = "dark red",
+           label = paste("z[krit]", "==", round(qnorm(.975), 2)), parse = T) +
+  annotate("text", x = ztest + 0.5, y = 0.2, color = "dark blue",
+           label = paste("z[test]", "==", round(ztest, 2)), parse = T) +
+  labs(x = NULL, y = NULL) +
+  theme_bw(base_family = "Palatino")
+```
+
 
 ## Aufgabe 3: A priori: t-Test (einseitig)
 
@@ -171,7 +234,8 @@ Berechnen Sie einen geeigneten Test für die Fragestellung, ob die Verteilungen 
 wilcox.test(as.numeric(student$Trinkverhalten) ~ student$Ernährungstyp)
 ```
 
-## Aufgabe 6: ANOVA + posthoc
+#
+# Aufgabe 6: ANOVA + posthoc
 
 Die Hypothese, dass es für die Schülerinnen keine **jahrgangsstufenspezifischen** Unterschiede im Hinblick auf die Anzahl von Wochentagen gibt, an denen für das Fach **Deutsch** gelernt wird, ist mit den für die **NGO-SchülerInnen** erhobenen Daten teststatistisch zu prüfen!
 
@@ -204,7 +268,14 @@ SchülerInnen des Kurses C: `22, 17, 12, 20, 16, 21, 22, 11, 21`
 
 Wenden Sie einen geeigneten Test an.
 
-## Aufgabe 8: Optimales N & t-Test (abhängig)
+```{r a07_df}
+kurse <- data.frame(A = c(10, 19, 21, 24, 22, 16, 11, 21, 19),
+                    B = c(16, 19, 18, 16, 11, 19, 19, 16, 21),
+                    C = c(22, 17, 12, 20, 16, 21, 22, 11, 21)) %>% 
+  gather(Kurs, Ergebnis, A, B, C)
+```
+
+# Aufgabe 8: Optimales N & t-Test (abhängig)
 
 Auf dem Testniveau $\alpha=0.05$ ist zu prüfen, ob bei den Schülerinnen Mittelwertunterschiede bei den Merkmalen **Mathe** und **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass beide Merkmale innerhalb der Grundgesamtheit der **125 NGO-Schülerinnen** normalverteilt sind! Es ist ein **zweiseitiger** Test durchzuführen und der **Stichprobenumfang** so zu wählen, dass ein **mittlerer Effekt** mit einer Wahrscheinlichkeit von mindestens **0.85** aufgedeckt werden kann. Wie viele Stichprobenelemente wären für die Durchführung eines **einseitigen Tests** angemessen gewesen?
 
