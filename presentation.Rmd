@@ -301,7 +301,27 @@ aov(Ergebnis ~ Kurs, data = kurse) %>%
 Auf dem Testniveau $\alpha=0.05$ ist zu prüfen, ob bei den Schülerinnen Mittelwertunterschiede bei den Merkmalen **Mathe** und **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass beide Merkmale innerhalb der Grundgesamtheit der **125 NGO-Schülerinnen** normalverteilt sind! Es ist ein **zweiseitiger** Test durchzuführen und der **Stichprobenumfang** so zu wählen, dass ein **mittlerer Effekt** mit einer Wahrscheinlichkeit von mindestens **0.85** aufgedeckt werden kann. Wie viele Stichprobenelemente wären für die Durchführung eines **einseitigen Tests** angemessen gewesen?
 
 
-## Aufgabe 9: Optimales N & t-Test (unabhängig)
+## Aufgabe 8: Optimales N & t-Test (abhängig)
+
+Auf dem Testniveau $\alpha=0.05$ ist zu prüfen, ob bei den Schülerinnen Mittelwertunterschiede bei den Merkmalen **Mathe** und **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass beide Merkmale innerhalb der Grundgesamtheit der **125 NGO-Schülerinnen** normalverteilt sind! Es ist ein **zweiseitiger** Test durchzuführen und der **Stichprobenumfang** so zu wählen, dass ein **mittlerer Effekt** mit einer Wahrscheinlichkeit von mindestens **0.85** aufgedeckt werden kann. Wie viele Stichprobenelemente wären für die Durchführung eines **einseitigen Tests** angemessen gewesen?
+
+```{r a08_pwr_paired_twosided, echo = T}
+pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.85, 
+           type = "paired", alternative = "two.sided")
+```
+
+
+## Aufgabe 8: Optimales N & t-Test (abhängig)
+
+Wie viele Stichprobenelemente wären für die Durchführung eines **einseitigen Tests** angemessen gewesen?
+
+```{r a08_pwr_paired_onesided, echo = T}
+pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.85, 
+           type = "paired", alternative = "greater")
+```
+
+#
+# Aufgabe 9: Optimales N & t-Test (unabhängig)
 
 Auf dem Testniveau von $\alpha=0.01$ ist zu prüfen, ob **geschlechtsspezifische** Mittelwertunterschiede beim Merkmal **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass das Merkmal **Deutsch** innerhalb der beiden Grundgesamtheiten der jeweiligen **125 NGO-Schüler und Schülerinnen** normalverteilt ist! Zur Prüfung der **zweiseitigen** Fragestellung ist der **Umfang** der beiden Zufallsstichproben so zu wählen, dass ein durch die **Effektgröße 0.9** beschriebener Effekt mit einer Wahrscheinlichkeit von mindestens **0.85** aufgedeckt werden kann! Wie berechnet sich der Testwert?
 
