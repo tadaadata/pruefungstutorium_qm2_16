@@ -178,7 +178,7 @@ Für die aus einer Zufallsauswahl vom Umfang **36** resultierenden Werte eines *
 
 - $w_{krit} \approx  `r qnorm(0.975)`$
 - $CI_{lower} = 33 - 1.2 \cdot `r round(qnorm(0.975), 3)` \approx `r 33 - 1.2 * qnorm(0.975)`$
-- $CI_{lower} = 33 + 1.2 \cdot `r round(qnorm(0.975), 3)` \approx `r 33 + 1.2 * qnorm(0.975)`$
+- $CI_{upper} = 33 + 1.2 \cdot `r round(qnorm(0.975), 3)` \approx `r 33 + 1.2 * qnorm(0.975)`$
 
 ```{r a04_plot, fig.height= 3, fig.width=7}
 ki <- c(33 - 1.2 * qnorm(0.975), 33 + 1.2 * qnorm(0.975))
@@ -234,8 +234,8 @@ Berechnen Sie einen geeigneten Test für die Fragestellung, ob die Verteilungen 
 wilcox.test(as.numeric(student$Trinkverhalten) ~ student$Ernährungstyp)
 ```
 
-#
-# Aufgabe 6: ANOVA + posthoc
+
+## Aufgabe 6: ANOVA + posthoc
 
 Die Hypothese, dass es für die Schülerinnen keine **jahrgangsstufenspezifischen** Unterschiede im Hinblick auf die Anzahl von Wochentagen gibt, an denen für das Fach **Deutsch** gelernt wird, ist mit den für die **NGO-SchülerInnen** erhobenen Daten teststatistisch zu prüfen!
 
@@ -249,11 +249,17 @@ Falls ein signifikantes Testergebnis vorliegt, ist die **empirische Effektgröß
 
 ## Aufgabe 6: ANOVA + posthoc (Code)
 
-```{r a06, echo = T}
+```{r a06_1, echo = T}
 probe6 <- ngo %>% filter(geschl == "Weiblich")
 anova6 <- aov(deutsch ~ jahrgang, data = probe6)
 anova6 %>% tidy() %>% kable(digits = 8)
 lsr::etaSquared(anova6, type = 3)
+```
+
+
+## Aufgabe 6: ANOVA + posthoc (Code)
+
+```{r a06_2, echo = T}
 asbio::pairw.anova(probe6$deutsch, probe6$jahrgang, method = "scheffe")$summary %>% kable(digits = 8)
 ```
 
@@ -275,7 +281,22 @@ kurse <- data.frame(A = c(10, 19, 21, 24, 22, 16, 11, 21, 19),
   gather(Kurs, Ergebnis, A, B, C)
 ```
 
-# Aufgabe 8: Optimales N & t-Test (abhängig)
+-
+<font size = "18">
+$$ \rightarrow \text{ANOVA!} $$
+</font>
+
+
+## Aufgabe 7: ANOVA
+
+```{r a07_anova}
+aov(Ergebnis ~ Kurs, data = kurse) %>% 
+  tidy() %>% 
+  kable()
+```
+
+
+## Aufgabe 8: Optimales N & t-Test (abhängig)
 
 Auf dem Testniveau $\alpha=0.05$ ist zu prüfen, ob bei den Schülerinnen Mittelwertunterschiede bei den Merkmalen **Mathe** und **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass beide Merkmale innerhalb der Grundgesamtheit der **125 NGO-Schülerinnen** normalverteilt sind! Es ist ein **zweiseitiger** Test durchzuführen und der **Stichprobenumfang** so zu wählen, dass ein **mittlerer Effekt** mit einer Wahrscheinlichkeit von mindestens **0.85** aufgedeckt werden kann. Wie viele Stichprobenelemente wären für die Durchführung eines **einseitigen Tests** angemessen gewesen?
 
