@@ -330,8 +330,8 @@ pwr.t.test(d = 0.9, sig.level = 0.01, power = 0.85,
            type = "two.sample", alternative = "two.sided")
 ```
 
-#
-# Aufgabe 10: ANOVA
+
+## Aufgabe 10: ANOVA
 
 a) Es ist zu prüfen, ob die These **Das Geschlecht und die Jahrgangsstufe üben einen Interaktionseffekt auf *Deutsch* aus, und das Geschlecht wirkt *nicht* als Haupteffekt.** akzeptabel ist!
 
@@ -340,6 +340,24 @@ b) Welche Voraussetzungen sind zu erfüllen, damit eine 2-faktorielle Varianzana
 c) Welche Feststellungen lassen sich – auf der Basis eines Testniveaus von $\alpha=0.05$ - über potentiell wirksame Effekte treffen?
 
 d) Wie viele SchülerInnen wären für jede der 6 Zellen des Versuchsplans erforderlich gewesen, um – auf der Basis des Testniveaus $\alpha=0.05$ - einen tatsächlich vorliegenden, nach Cohen als **stark** taxierten Interaktionseffekt mit einer Mindest-Teststärke von **0.8** „aufdecken“ zu können?
+
+
+## Aufgabe 10: ANOVA
+
+```{r a10_anova}
+aov(deutsch ~ geschl * jahrgang, data = ngo) %>% 
+  tidy() %>% 
+  kable()
+```
+
+<br/>
+Vorraussetzungen:
+
+Vorraussetzung      | Test          | p-Wert
+--------------------|---------------|----------
+Normalverteilung    | Shapiro-Wilk  | `r shapiro.test(ngo$deutsch)$p.value`  
+Varianzhomogenität  | Levene        | `r leveneTest(deutsch ~ geschl * jahrgang, data = ngo)$Pr[1]`
+
 
 ## Aufgabe 11: Kruskal-Wallis & Wilcoxon-Test
 
