@@ -320,12 +320,18 @@ pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.85,
            type = "paired", alternative = "greater")
 ```
 
-#
-# Aufgabe 9: Optimales N & t-Test (unabhängig)
+
+## Aufgabe 9: Optimales N & t-Test (unabhängig)
 
 Auf dem Testniveau von $\alpha=0.01$ ist zu prüfen, ob **geschlechtsspezifische** Mittelwertunterschiede beim Merkmal **Deutsch** festzustellen sind! Dazu ist zu unterstellen, dass das Merkmal **Deutsch** innerhalb der beiden Grundgesamtheiten der jeweiligen **125 NGO-Schüler und Schülerinnen** normalverteilt ist! Zur Prüfung der **zweiseitigen** Fragestellung ist der **Umfang** der beiden Zufallsstichproben so zu wählen, dass ein durch die **Effektgröße 0.9** beschriebener Effekt mit einer Wahrscheinlichkeit von mindestens **0.85** aufgedeckt werden kann! Wie berechnet sich der Testwert?
 
-## Aufgabe 10: ANOVA
+```{r a09_pwr_unpaired, echo = T}
+pwr.t.test(d = 0.9, sig.level = 0.01, power = 0.85, 
+           type = "two.sample", alternative = "two.sided")
+```
+
+#
+# Aufgabe 10: ANOVA
 
 a) Es ist zu prüfen, ob die These **Das Geschlecht und die Jahrgangsstufe üben einen Interaktionseffekt auf *Deutsch* aus, und das Geschlecht wirkt *nicht* als Haupteffekt.** akzeptabel ist!
 
