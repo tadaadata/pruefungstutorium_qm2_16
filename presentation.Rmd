@@ -46,6 +46,13 @@ library(nortest)
 options(digits = 3)
 ```
 
+# Intro
+
+## Diese Präsentation…
+
+- [Als Website (durchsuchbar)](http://public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/Presentation_web.html)
+- [Als Slideshow](http://public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/Presentation.html)
+
 # Aufgabenblock 1
 
 Berechnungen per Software
