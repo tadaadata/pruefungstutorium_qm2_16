@@ -14,4 +14,6 @@ if (system(command = "whoami", intern = T) == "Lukas") {
   file.copy("styles.css",            to = "~/BitTorrent Sync/public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/", overwrite = T)
   file.copy("Presentation.html",     to = "~/BitTorrent Sync/public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/", overwrite = T)
   file.copy("Presentation_web.html", to = "~/BitTorrent Sync/public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/", overwrite = T)
+  file.copy("presentation.Rmd",      to = "~/BitTorrent Sync/public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/", overwrite = T)
+
 }
