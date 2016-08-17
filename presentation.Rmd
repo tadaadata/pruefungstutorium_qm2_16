@@ -20,6 +20,7 @@ output:
     self_contained: yes
     toc: true
     toc_float: true
+    code_folding: show
 ---
 
 ```{r global_options, include=FALSE}
@@ -349,21 +350,30 @@ c) Welche Feststellungen lassen sich – auf der Basis eines Testniveaus von $\a
 d) Wie viele SchülerInnen wären für jede der 6 Zellen des Versuchsplans erforderlich gewesen, um – auf der Basis des Testniveaus $\alpha=0.05$ - einen tatsächlich vorliegenden, nach Cohen als **stark** taxierten Interaktionseffekt mit einer Mindest-Teststärke von **0.8** „aufdecken“ zu können?
 
 
-## Aufgabe 10: ANOVA
+## Aufgabe 10: ANOVA + Voraussetzungen (a-c)
 
-```{r a10_anova}
+```{r a10_anova, echo = FALSE}
 aov(deutsch ~ geschl * jahrgang, data = ngo) %>% 
   tidy() %>% 
   kable()
 ```
 
-<br/>
+<br />
 Vorraussetzungen:
 
 Vorraussetzung      | Test          | p-Wert
 --------------------|---------------|----------
 Normalverteilung    | Shapiro-Wilk  | `r shapiro.test(ngo$deutsch)$p.value`  
 Varianzhomogenität  | Levene        | `r leveneTest(deutsch ~ geschl * jahrgang, data = ngo)$Pr[1]`
+
+## Aufgabe 10: ANOVA: A priori (d)
+
+Effektgröße für die Software ist: $f = \sqrt{\frac{\eta^2}{1 - \eta^2}}$  
+Gilt für G*Power sowie die R-funktionen aus dem `pwr` package!
+
+```{r a10_anova_apriori, echo = TRUE}
+pwr.anova.test(k = 6, f = sqrt(0.14 / (1 - 0.14)), sig.level = 0.05, power = 0.8)
+```
 
 
 ## Aufgabe 11: Kruskal-Wallis & Wilcoxon-Test
@@ -378,7 +388,7 @@ Berechnungen per Hand ಠ_ಠ
 
 Berechnen Sie auf Basis folgender Daten die **Binnenvarianz**, die **Treatmentvarianz**, den **F-Wert** und den **kritischen Wert**:
 
-![](http://dump.jemu.name/VkCCo.png)
+<img src='http://dump.jemu.name/VkCCo.png' width = 90%>
 
 Zu welchem Inferenzschluss gelangen Sie?
 
@@ -427,4 +437,4 @@ Wie wahrscheinlich ist es, dass Werte im Bereich
 
 10 Frauen in der Alterskategorie 40+ wurden in einer Studie über ihre sportlichen Aktivitäten befragt. Jede dieser Frauen war in den letzten Monaten als Mitglied im Fitnessstudio registriert. Berechnen Sie auf Basis der nachfolgenden Daten den Standardfehler und die Standardabweichung. Vergleichen Sie die Werte.
 
-![](http://dump.jemu.name/wlc4l.png)
+<img src='http://dump.jemu.name/wlc4l.png' width=50%>
