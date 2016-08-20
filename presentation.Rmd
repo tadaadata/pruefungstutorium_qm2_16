@@ -7,20 +7,31 @@ output:
     css: styles.css
     fig_height: 4
     fig_width: 8
+    lib_dir: "assets"
     incremental: yes
     logo: RStudio-Ball.png
-    self_contained: yes
+    self_contained: no
     smaller: yes
     transition: slower
     widescreen: yes
   html_document:
     fig_caption: yes
     fig_width: 9
+    lib_dir: "assets"
     number_sections: no
-    self_contained: yes
+    self_contained: no
     toc: true
     toc_float: true
     code_folding: show
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    fig_caption: yes
+    fig_width: 9
+    lib_dir: "assets"
+    number_sections: no
+    self_contained: no
+    toc: true
 ---
 
 ```{r global_options, include=FALSE}
@@ -49,10 +60,17 @@ options(digits = 3)
 
 # Intro
 
-## Diese Präsentation…
+![](img/pumped_Tld8USHlpopYA.gif)
 
-- [Als Website (durchsuchbar)](http://public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/Presentation_web.html)
-- [Als Slideshow](http://public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/Presentation.html)
+## Diese Präsentation… {.flexbox .vcenter}
+
+
+[Als Slideshow (das hier)](http://public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/Presentation.html)
+
+[Als Website (durchsuchbar)](http://public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/Presentation_web.html)
+
+$\rightarrow$ public.tadaa-data.de/QM $\leftarrow$
+
 
 # Aufgabenblock 1
 
@@ -383,6 +401,8 @@ Wählen Sie selbst für Sie interessante Variablen einmal für eine Varianzanaly
 # Aufgabenblock 2
 
 Berechnungen per Hand ಠ_ಠ 
+
+![](img/despair_oEsUZ3jmzHGFi.gif)
 
 ## Aufgabe 13: ANOVA
 

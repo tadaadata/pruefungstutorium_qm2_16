@@ -34,6 +34,8 @@ vignettes/*.pdf
 .Rproj.user
 
 # Unneded output
-
+assets
+Presentation_files
+img
 *html
 plots/*png
