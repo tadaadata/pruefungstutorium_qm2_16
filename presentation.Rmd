@@ -35,11 +35,12 @@ output:
 ---
 
 ```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.path = "plots/", fig.align = "center", fig.retina = 2, echo = F, warning = F, message = F)
+knitr::opts_chunk$set(fig.path = "plots/", fig.align = "center", 
+                      fig.retina = 2, echo = F, warning = F, message = F)
 load(url("http://qm.jemu.name/data/ngo"))
 
 # Package init script
-#suppressWarnings(source("http://stats.jemu.name/qm/tools/package-init.R"))
+# suppressWarnings(source("http://stats.jemu.name/qm/tools/package-init.R"))
 library(sjPlot)
 library(dplyr)
 library(knitr)
@@ -411,6 +412,28 @@ Berechnen Sie auf Basis folgender Daten die **Binnenvarianz**, die **Treatmentva
 <img src='http://dump.jemu.name/VkCCo.png' width = 90%>
 
 Zu welchem Inferenzschluss gelangen Sie?
+
+```{r a13}
+a13 <- data.frame(hormon_1 = c(9, 12, 8), hormon_2 = c(4, 2, 5), kontrolle = c(2, 6, 3))
+
+a13 %>% gather(Gruppe, Wert) %>%
+  summarize(Mittelwert = mean(Wert), Variation = var(Wert)^2) %>% knitr::kable()
+```
+
+## Aufgabe 13: ANOVA (Teil 2)
+
+```{r a13_2}
+a13 %>% gather(Gruppe, Wert) %>%
+  group_by(Gruppe) %>%
+  summarize(Mittelwert = mean(Wert), Variation = sum((Wert - mean(Wert))^2)) %>% knitr::kable()
+
+a13 %>% gather(Gruppe, Wert) %>%
+  summarize(Gruppe = "Gesamt", Mittelwert = mean(Wert), Variation = var(Wert)^2) %>% knitr::kable()
+```
+
+- $$MS_{between} = \frac{SS_{between}}{k-1} = \frac{8.67 + 4.67 + 8.67}{3 - 1} = \frac{22}{2} = 11$$
+- $$MS_{within} = \frac{SS_{within}}{n - k} = \frac{(5.67 - 9.67)^2 + (5.67 - 3.96)^2 + (5.67 - 3.96)^2}{9-3} = 3.63$$
+- $$F_{(k-1, n-k)} = \frac{MS_{between}}{MS_{within}} = \frac{}{3.63} = $$
 
 ## Aufgabe 14
 
