@@ -413,27 +413,28 @@ Berechnen Sie auf Basis folgender Daten die **Binnenvarianz**, die **Treatmentva
 
 Zu welchem Inferenzschluss gelangen Sie?
 
-```{r a13}
+```{r a13, echo=T}
 a13 <- data.frame(hormon_1 = c(9, 12, 8), hormon_2 = c(4, 2, 5), kontrolle = c(3, 6, 3))
-
-a13 %>% gather(Gruppe, Wert) %>%
-  summarize(Mittelwert = mean(Wert), Variation = var(Wert)^2) %>% knitr::kable()
+a13 %<>% gather(Gruppe, Wert) 
+a13 %>% group_by(Gruppe) %>% 
+  summarize(mean      = mean(Wert), 
+            variation = var(Wert) * (length(Wert) - 1)) %>%
+  select(variation) %>% sum %>% divide_by(6) # 6 = n - k = 9 - 3
 ```
 
 ## Aufgabe 13: ANOVA (Teil 2)
 
-```{r a13_2}
-a13 %>% gather(Gruppe, Wert) %>%
-  group_by(Gruppe) %>%
-  summarize(Mittelwert = mean(Wert), Variation = sum((Wert - mean(Wert))^2)) %>% knitr::kable()
-
-a13 %>% gather(Gruppe, Wert) %>%
-  summarize(Gruppe = "Gesamt", Mittelwert = mean(Wert), Variation = var(Wert)^2) %>% knitr::kable()
+```{r a13_2, echo=T}
+a13 %>% group_by(Gruppe) %>% 
+  summarize(mean = mean(Wert)) %>% 
+  mutate(meandiffsquared = 3 * (mean(a13$Wert) - mean)^2) %>% 
+  select(meandiffsquared) %>% sum %>% divide_by(2) # 2 = k - 1
 ```
 
-- $$MS_{between} = \frac{SS_{between}}{k-1} = \frac{}{3 - 1} = \frac{}{2} = 34.11$$
-- $$MS_{within} = \frac{SS_{within}}{n - k} = \frac{(5.67 - 9.67)^2 + (5.67 - 3.96)^2 + (5.67 - 3.96)^2}{9-3} = 3.22$$
+- $$MS_{between} = \frac{SS_{between}}{k-1} = 34.11$$
+- $$MS_{within} = \frac{SS_{within}}{n - k} = 3.22$$
 - $$F_{(k-1, n-k)} = \frac{MS_{between}}{MS_{within}} = \frac{34.11}{3.22} \approx 10.586$$
+- $$F_{(,2, 6}_{krit} = `r round(qf(0.95, df1 = 2, df2 = 6), 3)`$$
 
 ## Aufgabe 14
 
