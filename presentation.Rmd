@@ -414,7 +414,7 @@ Berechnen Sie auf Basis folgender Daten die **Binnenvarianz**, die **Treatmentva
 Zu welchem Inferenzschluss gelangen Sie?
 
 ```{r a13}
-a13 <- data.frame(hormon_1 = c(9, 12, 8), hormon_2 = c(4, 2, 5), kontrolle = c(2, 6, 3))
+a13 <- data.frame(hormon_1 = c(9, 12, 8), hormon_2 = c(4, 2, 5), kontrolle = c(3, 6, 3))
 
 a13 %>% gather(Gruppe, Wert) %>%
   summarize(Mittelwert = mean(Wert), Variation = var(Wert)^2) %>% knitr::kable()
@@ -431,9 +431,9 @@ a13 %>% gather(Gruppe, Wert) %>%
   summarize(Gruppe = "Gesamt", Mittelwert = mean(Wert), Variation = var(Wert)^2) %>% knitr::kable()
 ```
 
-- $$MS_{between} = \frac{SS_{between}}{k-1} = \frac{8.67 + 4.67 + 8.67}{3 - 1} = \frac{22}{2} = 11$$
-- $$MS_{within} = \frac{SS_{within}}{n - k} = \frac{(5.67 - 9.67)^2 + (5.67 - 3.96)^2 + (5.67 - 3.96)^2}{9-3} = 3.63$$
-- $$F_{(k-1, n-k)} = \frac{MS_{between}}{MS_{within}} = \frac{}{3.63} = $$
+- $$MS_{between} = \frac{SS_{between}}{k-1} = \frac{}{3 - 1} = \frac{}{2} = 34.11$$
+- $$MS_{within} = \frac{SS_{within}}{n - k} = \frac{(5.67 - 9.67)^2 + (5.67 - 3.96)^2 + (5.67 - 3.96)^2}{9-3} = 3.22$$
+- $$F_{(k-1, n-k)} = \frac{MS_{between}}{MS_{within}} = \frac{34.11}{3.22} \approx 10.586$$
 
 ## Aufgabe 14
 
