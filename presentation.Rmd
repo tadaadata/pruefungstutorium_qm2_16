@@ -53,6 +53,7 @@ library(broom)
 library(tidyr)
 library(pwr)
 library(nortest)
+library(haven)
 
 
 # 3 digits are enough
@@ -73,9 +74,10 @@ options(digits = 3)
 $\rightarrow$ public.tadaa-data.de/QM $\leftarrow$
 
 
-# Aufgabenblock 1
+# Aufgabenblock 1 | Berechnungen per Software  
 
-Berechnungen per Software
+
+![](img/typing_5yLgoc7NuyKE9aHTEGY.gif)
 
 ## Aufgabe 1: 𝜒²-Test
 
@@ -399,9 +401,14 @@ pwr.anova.test(k = 6, f = sqrt(0.14 / (1 - 0.14)), sig.level = 0.05, power = 0.8
 
 Wählen Sie selbst für Sie interessante Variablen einmal für eine Varianzanalyse, einmal für den Kruskal-Wallis-Test & einmal für den Wilcoxon-Test aus dem Psychologie-Datensatz aus und interpretieren Sie die Daten.
 
-# Aufgabenblock 2
+```{r a11_psystat_ks}
+psych <- read_spss("http://qm.jemu.name/data/psystat.sav")
 
-Berechnungen per Hand ಠ_ಠ 
+tadaa_aov(zv8 ~ Mathe, psych, print = "markdown")
+kruskal.test(zv8 ~ Mathe, psych)
+```
+
+# Aufgabenblock 2 | Berechnungen per Hand ಠ_ಠ 
 
 ![](img/despair_oEsUZ3jmzHGFi.gif)
 
@@ -422,7 +429,25 @@ a13 %>% group_by(Gruppe) %>%
   select(variation) %>% sum %>% divide_by(6) # 6 = n - k = 9 - 3
 ```
 
-## Aufgabe 13: ANOVA (Teil 2)
+## Aufgabe 13: ANOVA
+
+<img src='http://dump.jemu.name/VkCCo.png' width = 90%>
+
+Binnenvarianz ($MS_{within}$):  
+$$\sum_{j=1}^k \sum_{i=1}^n \frac {(x_{i, j} - \bar{x_j})^2} {n - k}$$
+
+Treatmentvarianz ($MS_{between}$):  
+$$\sum_{j=1}^k n_j \frac {(x_{j} - \bar{x})^2} {k -1}$$
+
+
+F-Wert:  
+$$F = \frac {MS_{between}} {MS_{within}}$$#
+$F_{krit}$:  
+$$ df = (k-1, n-k) $$
+
+
+
+# Aufgabe 13: ANOVA (Teil 2)
 
 ```{r a13_2, echo=T}
 a13 %>% group_by(Gruppe) %>% 
