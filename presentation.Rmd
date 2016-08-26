@@ -412,7 +412,7 @@ kruskal.test(zv8 ~ Mathe, psych)
 
 ![](img/despair_oEsUZ3jmzHGFi.gif)
 
-## Aufgabe 13: ANOVA
+## Aufgabe 13: ANOVA (1)
 
 Berechnen Sie auf Basis folgender Daten die **Binnenvarianz**, die **Treatmentvarianz**, den **F-Wert** und den **kritischen Wert**:
 
@@ -429,9 +429,9 @@ a13 %>% group_by(Gruppe) %>%
   select(variation) %>% sum %>% divide_by(6) # 6 = n - k = 9 - 3
 ```
 
-## Aufgabe 13: ANOVA
+## Aufgabe 13: ANOVA (2)
 
-<img src='http://dump.jemu.name/VkCCo.png' width = 90%>
+$$\text{Hormon_1} = \{9, 12, 8\} \ \text{Hormon_2} = \{4, 2, 5\} \ \text{Kontrolle} = \{3, 6, 3\}$$
 
 Binnenvarianz ($MS_{within}$):  
 $$\sum_{j=1}^k \sum_{i=1}^n \frac {(x_{i, j} - \bar{x_j})^2} {n - k}$$
@@ -439,15 +439,11 @@ $$\sum_{j=1}^k \sum_{i=1}^n \frac {(x_{i, j} - \bar{x_j})^2} {n - k}$$
 Treatmentvarianz ($MS_{between}$):  
 $$\sum_{j=1}^k n_j \frac {(x_{j} - \bar{x})^2} {k -1}$$
 
-
 F-Wert:  
-$$F = \frac {MS_{between}} {MS_{within}}$$#
-$F_{krit}$:  
-$$ df = (k-1, n-k) $$
+$$F = \frac {MS_{between}} {MS_{within}}$$
+$$F_{krit}: F = (k-1, n-k)$$
 
-
-
-# Aufgabe 13: ANOVA (Teil 2)
+## Aufgabe 13: ANOVA (3)
 
 ```{r a13_2, echo=T}
 a13 %>% group_by(Gruppe) %>% 
