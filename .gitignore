@@ -36,6 +36,5 @@ vignettes/*.pdf
 # Unneded output
 assets
 Presentation_files
-img
 *html
 plots
