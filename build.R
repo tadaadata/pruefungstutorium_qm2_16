@@ -37,8 +37,8 @@ current_user <- system(command = "whoami", intern = T)
 
 if (current_user == "Lukas") {
   out_dir <- "~/BitTorrent Sync/public.tadaa-data.de/QM/pruefungstutorien/qm2_sose_16/"
-} else if (current_user == "Tobi") {
-  out_dir <- ""
+} else if (current_user == "tobias") {
+  out_dir <- "~/Dokumente/tadaa-data/pruefungstutorium_qm2_16/output"
 } else {
   out_dir <- ""
 }
