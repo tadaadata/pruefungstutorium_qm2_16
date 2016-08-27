@@ -260,7 +260,8 @@ Berechnen Sie einen geeigneten Test für die Fragestellung, ob die Verteilungen 
   $H_1:$ Vegetarier*innen konsumieren weniger Alkohol als Omnivore
 
 ```{r a05_wilcox.test}
-wilcox.test(as.numeric(student$Trinkverhalten) ~ student$Ernährungstyp)
+student %<>% mutate(Trinkverhalten = as.numeric(Trinkverhalten))
+tadaa_wilcoxon(student, Trinkverhalten, Ernährungstyp, print = "markdown")
 ```
 
 
@@ -405,7 +406,7 @@ Wählen Sie selbst für Sie interessante Variablen einmal für eine Varianzanaly
 psych <- read_spss("http://qm.jemu.name/data/psystat.sav")
 
 tadaa_aov(zv8 ~ Mathe, psych, print = "markdown")
-kruskal.test(zv8 ~ Mathe, psych)
+tadaa_kruskal(zv8 ~ Mathe, psych, print = "markdown")
 ```
 
 # Aufgabenblock 2 | Berechnungen per Hand ಠ_ಠ 
@@ -431,8 +432,9 @@ a13 %>% group_by(Gruppe) %>%
 
 ## Aufgabe 13: ANOVA (2)
 
-$$\text{Hormon_1} = \{9, 12, 8\} \ \text{Hormon_2} = \{4, 2, 5\} \ \text{Kontrolle} = \{3, 6, 3\}$$
+<img src='http://dump.jemu.name/VkCCo.png' width = 90%>
 
+<div class = "col2">
 Binnenvarianz ($MS_{within}$):  
 $$\sum_{j=1}^k \sum_{i=1}^n \frac {(x_{i, j} - \bar{x_j})^2} {n - k}$$
 
@@ -441,7 +443,10 @@ $$\sum_{j=1}^k n_j \frac {(x_{j} - \bar{x})^2} {k -1}$$
 
 F-Wert:  
 $$F = \frac {MS_{between}} {MS_{within}}$$
-$$F_{krit}: F = (k-1, n-k)$$
+
+$F_{krit}:$
+$${df}_F = (k-1, n-k)$$
+</div>
 
 ## Aufgabe 13: ANOVA (3)
 
