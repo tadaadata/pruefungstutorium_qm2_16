@@ -434,18 +434,22 @@ a13 %>% group_by(Gruppe) %>%
 
 <img src='http://dump.jemu.name/VkCCo.png' width = 90%>
 
-<div class = "col2">
-Binnenvarianz ($MS_{within}$):  
-$$\sum_{j=1}^k \sum_{i=1}^n \frac {(x_{i, j} - \bar{x_j})^2} {n - k}$$
+<div class="columns-2">
 
-Treatmentvarianz ($MS_{between}$):  
-$$\sum_{j=1}^k n_j \frac {(x_{j} - \bar{x})^2} {k -1}$$
+Binnenvarianz $MS_{within}$:  
+
+$$\sum_{j=1}^k \sum_{i=1}^n \frac{(x_{i, j} - \bar{x_j})^2}{n - k}$$
+
+Treatmentvarianz $MS_{between}$:  
+
+$$\sum_{j=1}^k n_j \frac{(x_{j} - \bar{x})^2}{k -1}$$
 
 F-Wert:  
-$$F = \frac {MS_{between}} {MS_{within}}$$
+$$F = \frac{MS_{between}}{MS_{within}}$$
 
-$F_{krit}:$
-$${df}_F = (k-1, n-k)$$
+$F_{krit}$:  
+
+$$\text{df}_F = (k-1, n-k)$$  
 </div>
 
 ## Aufgabe 13: ANOVA (3)
@@ -460,7 +464,7 @@ a13 %>% group_by(Gruppe) %>%
 - $$MS_{between} = \frac{SS_{between}}{k-1} = 34.11$$
 - $$MS_{within} = \frac{SS_{within}}{n - k} = 3.22$$
 - $$F_{(k-1, n-k)} = \frac{MS_{between}}{MS_{within}} = \frac{34.11}{3.22} \approx 10.586$$
-- $$F_{(,2, 6}_{krit} = `r round(qf(0.95, df1 = 2, df2 = 6), 3)`$$
+- $$F {(2, 6)}_{krit} = 5.143$$
 
 ## Aufgabe 14
 

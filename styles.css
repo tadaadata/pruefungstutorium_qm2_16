@@ -6,12 +6,6 @@ slides > slide > hgroup + article {
     margin-top: 10px !important;
 }
 
-/* two column layouts are nice to have from time to time 
-*/
-.col2 {
-    columns: 2 150px;
-  }
-
 /* I tried to fiddle with the pres resolution. This is hard.
    Left this here in case I ever need it.
 
