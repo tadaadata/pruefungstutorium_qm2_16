@@ -233,7 +233,7 @@ ggplot(data = df, aes(x = x, y = y)) +
 ## Aufgabe 5: t-Test / U-Test (?) {.build}
 
 ```{r a05_datainit}
-student <- labels_to_factor(haven::read_spss("http://qm.jemu.name/data/Student_Daten.sav"))
+student <- labels_to_factor(read_spss("http://qm.jemu.name/data/Student_Daten.sav"))
 ```
 
 Berechnen Sie einen geeigneten Test für die Fragestellung, ob die Verteilungen des Alkoholkkonsums bei ernährungsbewussten StudentInnen (Vegetarier) und der fleischkonsumierenden StudentInnen gleich sind. Prüfen Sie einseitig die Annahme, dass die Tatsache Vegetarier zu sein, sich positiv auf einen geringeren Alkoholkonsum auswirkt. Wie kommt der resultierende Testwert zustande?
@@ -398,16 +398,35 @@ pwr.anova.test(k = 6, f = sqrt(0.14 / (1 - 0.14)), sig.level = 0.05, power = 0.8
 ```
 
 
-## Aufgabe 11: Kruskal-Wallis & Wilcoxon-Test
+## Aufgabe 11: Kruskal-Wallis & Wilcoxon-Test (1)
 
 Wählen Sie selbst für Sie interessante Variablen einmal für eine Varianzanalyse, einmal für den Kruskal-Wallis-Test & einmal für den Wilcoxon-Test aus dem Psychologie-Datensatz aus und interpretieren Sie die Daten.
 
-```{r a11_psystat_ks}
-psych <- read_spss("http://qm.jemu.name/data/psystat.sav")
+**Anzahl sexueller Partner\*innen und Parteipräferenz**
 
-tadaa_aov(zv8 ~ Mathe, psych, print = "markdown")
-tadaa_kruskal(zv8 ~ Mathe, psych, print = "markdown")
+Anova:
+
+```{r a11_psystat_aov}
+psych <- labels_to_factor(read_spss("/home/tobias/Dropbox/Dokumente/Studium/Tutorium - QM II/data/data/survey.sav"))
+
+tadaa_aov(sex_partner ~ partei, psych, print = "markdown")
 ```
+Kruskal-Wallis:
+```{r a11_kw}
+tadaa_kruskal(sex_partner ~ partei, psych, print = "markdown")
+```
+
+
+## Aufgabe 11: Kruskal-Wallis & Wilcoxon-Test (2)
+
+***Wie viele Stunden Schlaf brauchst du im Schnitt, um dich ausgeschlafen zu fühlen?* und *Hattest du schon mal einen One Night Stand?***
+
+Wilcoxon:
+```{r a11_wilcoxon}
+tadaa_wilcoxon(psych, schlaf, sex_one_night_stand, print = "markdown")
+```
+
+
 
 # Aufgabenblock 2 | Berechnungen per Hand ಠ_ಠ 
 
