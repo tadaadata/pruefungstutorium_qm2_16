@@ -407,7 +407,7 @@ Wählen Sie selbst für Sie interessante Variablen einmal für eine Varianzanaly
 Anova:
 
 ```{r a11_psystat_aov}
-psych <- labels_to_factor(read_spss("/home/tobias/Dropbox/Dokumente/Studium/Tutorium - QM II/data/data/survey.sav"))
+psych <- labels_to_factor(read_spss("http://qm.jemu.name/data/qm_2_survey_final.sav"))
 
 tadaa_aov(sex_partner ~ partei, psych, print = "markdown")
 ```
