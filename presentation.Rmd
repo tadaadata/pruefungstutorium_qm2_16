@@ -140,7 +140,7 @@ ggplot(data = NULL, aes(x = -3.3:3.3)) +
   annotate("text", x = ztest + 0.4, y = 0.2, color = "dark blue",
            label = paste("z[test]", "==", round(ztest, 2)), parse = T) +
   labs(x = NULL, y = NULL) +
-  theme_bw(base_family = "Palatino")
+  theme_readthedown(base_family = "Palatino")
 ```
 
 
@@ -163,7 +163,7 @@ ggplot(data = NULL, aes(x = -3.3:3.3)) +
   annotate("text", x = ztest + 0.5, y = 0.2, color = "dark blue",
            label = paste("z[test]", "==", round(ztest, 2)), parse = T) +
   labs(x = NULL, y = NULL) +
-  theme_bw(base_family = "Palatino")
+  theme_readthedown(base_family = "Palatino")
 ```
 
 
@@ -185,7 +185,7 @@ ggplot(data = NULL, aes(x = -4:7)) +
   annotate("text", x = 3, y = .1, label = "1-beta", parse = TRUE, size = 6, family = "Palatino") +
   annotate("text", x = 2, y = .025, label = "alpha", parse = TRUE, size = 4, family = "Palatino") +
   labs(x = "x", y = expression(P(x)), title = expression("N(0,1) & N(3,1)")) + 
-  theme_bw(base_family = "Palatino") + 
+  theme_readthedown(base_family = "Palatino") + 
   theme(panel.grid.major = element_line(size = 0.1), 
         panel.grid.minor = element_line(linetype = "blank"))
 ```
@@ -245,8 +245,8 @@ Vorraussetzungen:
 
 Test          | Sig.-Niveau 
 --------------|-------------
-Shapiro-Wilk  | `r shapiro.test(as.numeric(student$Trinkverhalten))$p.value`
-Levene        | `r leveneTest(as.numeric(student$Trinkverhalten) ~ student$Ernährungstyp)$Pr[1]`  
+Shapiro-Wilk  | `r pval_string(shapiro.test(as.numeric(student$Trinkverhalten))$p.value)`
+Levene        | `r pval_string(leveneTest(as.numeric(student$Trinkverhalten) ~ student$Ernährungstyp)$Pr[1]`)  
 
 <br />
 $\rightarrow$ **Mann-Whitney-U-Test!**
@@ -320,9 +320,7 @@ $$ \rightarrow \text{ANOVA!} $$
 ## Aufgabe 7: ANOVA
 
 ```{r a07_anova}
-aov(Ergebnis ~ Kurs, data = kurse) %>% 
-  tidy() %>% 
-  kable()
+tadaa_aov(Ergebnis ~ Kurs, data = kurse, print = "markdown")
 ```
 
 
