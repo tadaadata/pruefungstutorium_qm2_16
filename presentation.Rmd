@@ -245,8 +245,8 @@ Vorraussetzungen:
 
 Test          | Sig.-Niveau 
 --------------|-------------
-Shapiro-Wilk  | `r pval_string(shapiro.test(as.numeric(student$Trinkverhalten))$p.value)`
-Levene        | `r pval_string(leveneTest(as.numeric(student$Trinkverhalten) ~ student$Ernährungstyp)$Pr[1]`)  
+Shapiro-Wilk  | < 0.001
+Levene        | `< 0.05 
 
 <br />
 $\rightarrow$ **Mann-Whitney-U-Test!**
