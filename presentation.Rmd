@@ -294,7 +294,7 @@ asbio::pairw.anova(probe6$deutsch, probe6$jahrgang, method = "scheffe")$summary 
 ```
 
 
-## Aufgabe 7: ANOVA
+## Aufgabe 7: ANOVA {.incremental}
 
 In 3 Kursen (A, B, C) der 11. Jahrgangsstufe werden Schüler und Schülerinnen nach unterschiedlichen Methoden unterrichtet. Aus jedem der 3 Kurse werden jeweils 9 SchülerInnen durch eine Zufallsauswahl bestimmt. Bei einem abschließenden Leistungstest werden die folgenden Ergebnisse erzielt:
 
@@ -311,10 +311,12 @@ kurse <- data.frame(A = c(10, 19, 21, 24, 22, 16, 11, 21, 19),
   gather(Kurs, Ergebnis, A, B, C)
 ```
 
--
+<div class="columns-2">
+![](img/jehova_l41lGAcThnMc29u2Q.gif)  
+  
 <font size = "18">
 $$ \rightarrow \text{ANOVA!} $$
-</font>
+</font></div>
 
 
 ## Aufgabe 7: ANOVA
