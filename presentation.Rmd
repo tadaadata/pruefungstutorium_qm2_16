@@ -135,9 +135,9 @@ ggplot(data = NULL, aes(x = -3.3:3.3)) +
   stat_function(fun = dnorm, geom = "density", color = "black") +
   geom_vline(aes(xintercept = qnorm(.05)), color = "red") +
   geom_vline(aes(xintercept = ztest), color = "blue") +
-  annotate("text", x = qnorm(.05) - 0.55, y = 0.3, color = "dark red",
+  annotate("text", x = qnorm(.05), y = 0.35, color = "dark red", size = 5,
            label = paste("z[krit]", "==", round(qnorm(.05), 2)), parse = T) +
-  annotate("text", x = ztest + 0.4, y = 0.2, color = "dark blue",
+  annotate("text", x = ztest - 0.5, y = 0.25, color = "dark blue", size = 7,
            label = paste("z[test]", "==", round(ztest, 2)), parse = T) +
   labs(x = NULL, y = NULL) +
   theme_readthedown(base_family = "Palatino")
@@ -156,11 +156,11 @@ ggplot(data = NULL, aes(x = -3.3:3.3)) +
   geom_vline(aes(xintercept = qnorm(.025)), color = "red") +
   geom_vline(aes(xintercept = qnorm(.975)), color = "red") +
   geom_vline(aes(xintercept = ztest), color = "blue") +
-  annotate("text", x = qnorm(.025) + 0.6, y = 0.3, color = "dark red",
+  annotate("text", x = qnorm(.025) + 0.7, y = 0.35, color = "dark red", size = 5,
            label = paste("z[krit]", "==", round(qnorm(.025), 2)), parse = T) +
-  annotate("text", x = qnorm(.975) - 0.5, y = 0.3, color = "dark red",
+  annotate("text", x = qnorm(.975) - 0.6, y = 0.35, color = "dark red", size = 5,
            label = paste("z[krit]", "==", round(qnorm(.975), 2)), parse = T) +
-  annotate("text", x = ztest + 0.5, y = 0.2, color = "dark blue",
+  annotate("text", x = ztest - 0.5, y = 0.2, color = "dark blue", size = 7,
            label = paste("z[test]", "==", round(ztest, 2)), parse = T) +
   labs(x = NULL, y = NULL) +
   theme_readthedown(base_family = "Palatino")
