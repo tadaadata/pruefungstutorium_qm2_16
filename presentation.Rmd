@@ -419,7 +419,9 @@ tadaa_kruskal(sex_partner ~ partei, psych, print = "markdown")
 
 ## Aufgabe 11: Kruskal-Wallis & Wilcoxon-Test (2)
 
-***Wie viele Stunden Schlaf brauchst du im Schnitt, um dich ausgeschlafen zu fühlen?* und *Hattest du schon mal einen One Night Stand?***
+***"Wie viele Stunden Schlaf brauchst du im Schnitt, um dich ausgeschlafen zu fühlen?"***  
+und  
+***"Hattest du schon mal einen One Night Stand?*"**
 
 Wilcoxon:
 ```{r a11_wilcoxon}
